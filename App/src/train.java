@@ -1,29 +1,48 @@
 import java.util.*;
 
+class Bogie {
+    String name;
+    int capacity;
+
+    public Bogie(String name, int capacity) {
+        this.name = name;
+        this.capacity = capacity;
+    }
+
+    @Override
+    public String toString() {
+        return name + " (" + capacity + " seats)";
+    }
+}
+
 public class train {
 
     public static void main(String[] args) {
 
         System.out.println("=== Train Consist Management App ===");
 
-        // 🔹 Create HashMap for Bogie → Capacity
-        HashMap<String, Integer> bogieCapacityMap = new HashMap<>();
+        // 🔹 Create List of Bogies
+        List<Bogie> bogies = new ArrayList<>();
 
-        // 🔹 Add Bogie Capacities
-        bogieCapacityMap.put("Sleeper", 72);
-        bogieCapacityMap.put("AC Chair", 60);
-        bogieCapacityMap.put("First Class", 40);
+        bogies.add(new Bogie("Sleeper", 72));
+        bogies.add(new Bogie("AC Chair", 56));
+        bogies.add(new Bogie("First Class", 40));
 
-        // 🔹 Display Capacity Mapping
-        System.out.println("\nBogie Capacity Details:");
+        System.out.println("\nBefore Sorting:");
+        System.out.println(bogies);
 
-        for (Map.Entry<String, Integer> entry : bogieCapacityMap.entrySet()) {
-            System.out.println(entry.getKey() + " -> Capacity: " + entry.getValue());
-        }
+        // 🔹 Sort using Comparator (Ascending by capacity)
+        bogies.sort(Comparator.comparingInt(b -> b.capacity));
 
-        // 🔹 Example Lookup
-        System.out.println("\nCapacity of Sleeper: " + bogieCapacityMap.get("Sleeper"));
+        System.out.println("\nAfter Sorting (Ascending by Capacity):");
+        System.out.println(bogies);
 
-        System.out.println("\nSystem ready for analytics and validation...");
+        // 🔹 Optional: Descending order
+        bogies.sort(Comparator.comparingInt((Bogie b) -> b.capacity).reversed());
+
+        System.out.println("\nAfter Sorting (Descending by Capacity):");
+        System.out.println(bogies);
+
+        System.out.println("\nSystem ready for capacity-based planning.");
     }
 }
