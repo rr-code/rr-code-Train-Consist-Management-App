@@ -5,13 +5,28 @@ public class GoodsBogie {
     public String type;
     public String cargo;
 
-    public GoodsBogie(String type, String cargo) {
+    public GoodsBogie(String type) {
         this.type = type;
-        this.cargo = cargo;
     }
 
-    @Override
-    public String toString() {
-        return type + " - " + cargo;
+    public void assignCargo(String cargo) {
+
+        try {
+            // ❌ Unsafe rule
+            if (type.equalsIgnoreCase("Rectangular") &&
+                    cargo.equalsIgnoreCase("Petroleum")) {
+
+                throw new CargoSafetyException("Unsafe cargo assignment!");
+            }
+
+            this.cargo = cargo;
+            System.out.println("Cargo assigned successfully");
+
+        } catch (CargoSafetyException e) {
+            System.out.println("Error: " + e.getMessage());
+
+        } finally {
+            System.out.println("Assignment attempt completed");
+        }
     }
 }
