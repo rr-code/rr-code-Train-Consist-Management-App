@@ -1,6 +1,6 @@
 package main;
 
-public class UseCase15SafeCargo {
+public class UseCase15SSafeCargo {
 
     public static void main(String[] args) {
 

@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class UseCase15SafeCargoTest {
+public class UseCase15SSafeCargoTest {
 
     @Test
     void testCargo_SafeAssignment() {
